@@ -1,5 +1,11 @@
 <template>
-  <div/>
+  <section>
+    <p v-for="todo in todos" :key="todo.id">
+      <input type="checkbox" :value="todo.isComplete" @click="setComplete(todo)"/>
+      {{todo.text}}
+      <a @click="deleteTodo(todo)"> [x] </a>
+    </p>
+  </section>
 </template>
 
 <script lang="ts">
