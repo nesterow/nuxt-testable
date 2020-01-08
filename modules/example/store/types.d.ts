@@ -12,7 +12,7 @@ export interface ITodosStore {
 } 
 
 export interface ITodo {
-  id: string,
+  id?: string,
   text: string
   timeCreated: Date
   isComplete?: boolean
