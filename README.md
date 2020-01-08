@@ -1,7 +1,12 @@
 # nuxt-testable
-
+Write testable code with TypeScript, Nuxt and VueJS
 
 # TL;DR
+This is a long text about a 100 lines of code. 
+
+
+# Testable code with VueJS and TypeScript
+
 Whenever I write code, an unit test is always the first debugging tool I use to verify that everything works as intended. Sometimes I catch myself thinking that I cannot imagine development process without writing tests. However, when I work on some projects it is impossible to use TDD, because legacy codebase doesn't follow any good principles (SOLID, GoF) or people who develop it, simply don't know how to write testable code with VueJS. And to my disappointment, I couldn't find any reasonable materials about testing client javascript applications written with VueJS.
 
 In this tutorial, I want to share patterns that help me writing testable VueJS applications. I am going to use [NuxtJS typescript template](https://github.com/nuxt-community/typescript-template) from Nuxt Community, and class-based style for Vue and Vuex components.
