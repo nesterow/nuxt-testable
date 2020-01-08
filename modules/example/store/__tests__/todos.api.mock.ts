@@ -11,7 +11,7 @@ const todos: ITodo[] = []
  * get todos
  */
 mock.onGet('/todos').reply((config) => {
-  return [200, todos]
+  return [200, JSON.stringify(todos)]
 })
 
 /**
