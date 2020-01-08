@@ -1,12 +1,12 @@
 # nuxt-testable
 Write testable code with TypeScript, Nuxt and VueJS
 
+
 # TL;DR
 This is a long text about a 100 lines of code. 
 
 
-# Testable code with VueJS and TypeScript
-
+------------------
 Whenever I write code, an unit test is always the first debugging tool I use to verify that everything works as intended. Sometimes I catch myself thinking that I cannot imagine development process without writing tests. However, when I work on some projects it is impossible to use TDD, because legacy codebase doesn't follow any good principles (SOLID, GoF) or people who develop it, simply don't know how to write testable code with VueJS. And to my disappointment, I couldn't find any reasonable materials about testing client javascript applications written with VueJS.
 
 In this tutorial, I want to share patterns that help me writing testable VueJS applications. I am going to use [NuxtJS typescript template](https://github.com/nuxt-community/typescript-template) from Nuxt Community, and class-based style for Vue and Vuex components.
@@ -814,9 +814,9 @@ export default class extends Vue {
 
 ### Testing vue components
 
-Testing vue components is similar to what did with our Vuex module. However, it requires more configuring. Because now our tests has to use mounted Vue components with connected Vuex store. 
+Testing vue components is similar to what did with our Vuex module. However, it requires more configuring. Because now our tests have to use mounted Vue components with connected Vuex store. 
 
-We'll write a factory function which will return mounted component with our store module. Also, let's make our factory function reusable, because now we'll test more than one component.
+We'll write a factory function which returns mounted component with our store module. Also, let's make our factory function reusable, because now we test more than one component.
 
 Create file `__tests__/__factory.ts` with following content:
 ```typescript
@@ -910,7 +910,7 @@ Our component already has the `ds` property and our first test should pass. So l
  
 ### TDD and vue components
 
-When you writing an application (not a UI kit) don't make your unit tests to depend on component's markup. Yes, vue test utils provide you with tools to test html markup, but during development, html markup updates very often and it can create a lot of routine to maintain the tests. The best way to avoid it, is to write the tests only for javascript context that isn't related to markup. Or to test markup in the way so it doesn't depend on complex css selectors. My approach to this is simple - I don't touch markup in the unit tests, because it is something that you can do much better by hand (using browser). HTML markup can be tested by `e2e` tests in the pre-release phase (if your company does it).
+When you writing an application (not a UI kit) don't make your unit tests to depend on component's markup. Yes, vue test utils provide you with tools to test html markup, but during development, html code updates very often and it can create a lot of routine to maintain the tests. The best way to avoid it, is to write the tests only for javascript context that isn't related to markup. Or to test markup in the way so it doesn't depend on complex css selectors. My approach to this is simple - I don't touch markup in the unit tests, because it is something that you can do much better by hand (using browser). HTML markup can be tested by `e2e` tests in the pre-release phase (if your company does it).
 
 
 Back to the code. Now we need to add actual functionality to our component. This is the case, when sometimes I write a method before I write the test. Because designing component's behaviour is more convenient inside the component. So we'll return to our test when we realise how the component would work. 
@@ -982,10 +982,9 @@ In this test we get components context `wrap.vm`, then we set reactive data prop
 
 ### Connecting the dots
 It is time to connect our module to the nuxt application in order to proceed with UI development. 
-
 It is simple, we need to provide our vuex module to the global store and mount our parent component somewhere.
 
-Connecting the store module is usually as simple as importing it to the `~/store/index.ts` and adding it to the `modules` constant. But, do you remember that we don't have an actual api yet? During development it is normal to use mocked api. It would be nicer to setup configuration for development environment which would use required entities when we have `dev` environment, but in this simple case I am going to configure dev. store in place:
+Connecting the store module is usually as simple as importing it to the `~/store/index.ts` and adding it to the `modules` object. But, do you remember that we don't have an actual api yet? During development it is normal to use mocked api. It would be nicer to setup configuration for development environment which would use required entities when we have `dev` environment, but in this simple case I am going to configure dev. store in place:
 
 ```typescript
 ⌃...
@@ -1032,7 +1031,7 @@ export default class extends Todos {
 ``` 
 
 ### Adding component's markup
-Once the nuxt application is set and running let's see what happens if we add some markup to the `AddTodo.vue`. My makup looks as follows:
+Once the nuxt application is set and running, let's see what happens if we add some markup to the `AddTodo.vue`. My makup looks as follows:
 ```html
 <template>
   <section>
@@ -1051,6 +1050,9 @@ I don't know about you, but my component worked as expected. And usually it work
 We have some work left to complete this application. However any further work would be just repeating the steps I described above. So I just share the result in [this repository](https://github.com/nesterow/nuxt-testable) or let you do it yourself if you managed to read whole post.
 
 Cheers!
+
+
+
 
 
 
