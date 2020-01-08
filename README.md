@@ -7,7 +7,7 @@ Whenever I write code, an unit test is always the first debugging tool I use to 
 In this tutorial, I want to share patterns that help me writing testable VueJS applications. I am going to use [NuxtJS typescript template](https://github.com/nuxt-community/typescript-template) from Nuxt Community, and class-based style for Vue and Vuex components.
 
 ------------------
-## Setup environment
+### Setup environment
 
 #### 1. Generate application skeleton and install dependencies:
 
@@ -112,7 +112,7 @@ Open `package.json` and add following configuration:
 ------------------
 
 
-## Organising the code 
+### Organising the code 
 
 Let's take a pause and consider how we organise the application code. 
 
@@ -138,7 +138,7 @@ Most people stop at this point and just follow boilerplate defaults. Because the
 
 
 --------
-## Modules
+### Modules
 
 Instead of writing application by boilerplate, I suggest to treat default application structure as an *assembly point* for *independent modules*. I mean 'modules' in broader sense than just nuxt modules. In this case a module should fit for any vuex-driven application.
 
@@ -171,18 +171,18 @@ Now, we can remove "components" and "middleware" directories from application an
 
 
 ---------------
-## Class-based components.
+### Class-based components.
 Writing vue components as classes allows for more sharp and maintainable code. Also, it gives us an opportunity to use inheritance and apply OOP patterns in more concise way.
 
 Following libraries help us to write components in class-based style: 
 [vuex-module-decorators](https://github.com/championswimmer/vuex-module-decorators) and [nuxt-property-decorator](https://github.com/nuxt-community/nuxt-property-decorator). Later we'll see how they work in detail.
 
-## Writing a simple app
+### Writing a simple app
 Let's write a simple todo application. I believe you've done one of those before, but this time instead of jumping right into visual part of the application, we'll do the data model first and start from creating Vuex store. More importantly, we'll begin with writing a specification for our Vuex store. "Specification" is just another word for "test". 
 
 During development process, a specification is the first debugging tool. If you had never written a test before, just think about it as of a sophisticated "console.log". 
 
-## Test Vuex modules
+### Test Vuex modules
 
 To begin, create a couple new files in our example module: `store/todos.ts` and `store/__tests__/TodosStore.spec.ts`.
 ```
@@ -279,7 +279,7 @@ Here is how TDD process goes most of the time:
 
 To be realistic, this is not always the case. Sometimes you need to write the test subject before writing the spec, but it doesn't matter if you use the spec for debugging. Also, not everything should be covered by tests - only the parts that affect your program correctness. 
 
-### Vuex module
+### Vuex modules
 Now, let's make the test pass. At the current state our test should pass simply when we create a complete Vuex module.
 
 ##### USEFUL TIP:
@@ -1026,7 +1026,7 @@ export default class extends Todos {
 
 ``` 
 
-#### Adding component's markup
+### Adding component's markup
 Once the nuxt application is set and running let's see what happens if we add some markup to the `AddTodo.vue`. My makup looks as follows:
 ```html
 <template>
@@ -1043,7 +1043,7 @@ Let's test it with the browser and [Vue Devtools](https://chrome.google.com/webs
 I don't know about you, but my component worked as expected. And usually it works at first try. Notice that it is the first time we launch the browser, a fifteen minutes would pass for me to get to this point if I din't write this post. And this is not a long time considering that at this point we've done more than `50%` of the work relying only on unit tests. And now the development process will go much faster.
 
 ### What next
-We have some work left to complete this application. However any further work would be just repeating the steps I described above. So I just share the result in [this repository](#) or let you do it yourself if you managed to read whole post.
+We have some work left to complete this application. However any further work would be just repeating the steps I described above. So I just share the result in [this repository](https://github.com/nesterow/nuxt-testable) or let you do it yourself if you managed to read whole post.
 
 Cheers!
 
