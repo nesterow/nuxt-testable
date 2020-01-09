@@ -3,7 +3,7 @@ Write testable code with TypeScript, Nuxt and VueJS
 
 
 # TL;DR
-This is a long text about a 100 lines of code. 
+This is the long text about a 100 lines of code. 
 
 
 ------------------
