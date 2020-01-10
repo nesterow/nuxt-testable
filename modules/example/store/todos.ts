@@ -1,16 +1,15 @@
 import axios, {AxiosInstance} from 'axios';
 import {provideVuex, consume} from 'provide-consume-decorator';
 import {Module, VuexModule, Mutation, Action} from 'vuex-module-decorators';
-import {ITodosStore, ITodo} from './types'
+import {ITodosStore, ITodo} from './types';
+import config from '../config';
 
 @Module({
   name: 'todos',
   namespaced: true,
   stateFactory: true
 })
-@provideVuex({
-  axios: () => axios.create()
-})
+@provideVuex(config.store.todos)
 export default class extends VuexModule implements ITodosStore {
   
   @consume('axios') api!: AxiosInstance;

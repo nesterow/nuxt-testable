@@ -4,9 +4,6 @@ import {getModule} from 'vuex-module-decorators'
 import TodosStore from '../todos'
 import { ITodo } from '../types'
 
-import { provideVuex } from 'provide-consume-decorator'
-import apiMock from './todos.api.mock'
-
 
 const Vue = createLocalVue()
 Vue.use(Vuex)
@@ -15,18 +12,12 @@ Vue.use(Vuex)
  * Factory function returns a new store instance
  */
 const factory = () => {
-  @provideVuex({
-    axios: () => apiMock
-  })
-  class TodosStoreMock extends TodosStore {
-
-  }
   const store = new Vuex.Store({
     modules: {
-      todos: TodosStoreMock
+      todos: TodosStore
     }
   })
-  return getModule(TodosStoreMock, store)
+  return getModule(TodosStore, store)
 }
 
 

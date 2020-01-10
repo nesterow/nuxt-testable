@@ -17,6 +17,7 @@ import TodosStore from './store/todos'
 
 import AddTodo from './components/AddTodo.vue';
 import TodoList from './components/TodoList.vue';
+import config from './config'
 
 @Component({
   components: {
@@ -28,8 +29,8 @@ import TodoList from './components/TodoList.vue';
   //provide a data store
   dataStore() {
     return getModule(TodosStore, this.$store)
-  }
-
+  },
+  ...config.app
 })
 export default class extends Vue {
 
