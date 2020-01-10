@@ -5,16 +5,9 @@ import localRandomData from "~/static/random-data.json";
 
 import TodosStore from '~/modules/example/store/todos';
 
-//TODO: apply only for dev environ
-import {provideVuex} from 'provide-consume-decorator';
-import axiosMock from '~/modules/example/store/__tests__/todos.api.mock'
-@provideVuex({
-  axios: ()=> axiosMock
-})
-class TodosStoreMock extends TodosStore {}
 
 export const modules = {
-  'todos': TodosStoreMock
+  'todos': TodosStore
 }
 
 export const state = (): RootState => ({
